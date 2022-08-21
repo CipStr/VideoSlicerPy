@@ -16,9 +16,12 @@ def main(argv):
     start = FLAGS.part * clipLength
     # end time is based on part number and clip length
     end = (FLAGS.part + 1) * clipLength
-    ffmpeg_extract_subclip(FLAGS.inputFile, start, end, targetname=FLAGS.outputFile)
+    # add part number to output file name
+    outputFile = FLAGS.outputFile + '_' + str(FLAGS.part) + '.mp4'
+    ffmpeg_extract_subclip(FLAGS.inputFile, start, end, targetname=outputFile)
     logging.info('Video sliced!')
 
 
 if __name__ == '__main__':
     app.run(main)
+
