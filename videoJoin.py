@@ -16,7 +16,15 @@ flags.DEFINE_boolean('auto', False, 'Waits for containers and then joins the cli
 def main(argv):
     if FLAGS.auto:
         # wait 2 minutes
-        time.sleep(120)
+        time.sleep(60)
+        page = urllib.request.urlopen("http://172.17.0.1:80/container")
+        container_number = page.read()
+        # from bytes to string
+        container_number = container_number.decode("utf-8")
+        # convert to int
+        container_number = int(container_number) - 1
+        while int(urllib.request.urlopen("http://172.17.0.1:80/oknumber").read().decode("utf-8")) != str(container_number):
+            time.sleep(15)
     # access the folder
     folder = FLAGS.inputFolder
     # get the list of files in the folder
