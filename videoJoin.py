@@ -39,8 +39,13 @@ def main(argv):
         fileName = os.path.join(folder, file)
         # get the file extension
         fileExtension = os.path.splitext(fileName)[1]
+        # file name without extension
+        fileNameWithoutExtension = os.path.splitext(fileName)[0]
         # if the file is a video file
         if fileExtension == '.avi':
+            os.popen(
+                "ffmpeg -i '{input}' -ac 2 -b:v 2000k -c:a aac -c:v libx264 -b:a 160k -vprofile high -bf 0 -strict experimental -f mp4 '{output}.mp4'".format(
+                    input=fileName, output=fileNameWithoutExtension + '.mp4'))
             # add the file to the list of files to be joined
             filesToJoin.append(fileName)
             # sort the list of files to be joined
