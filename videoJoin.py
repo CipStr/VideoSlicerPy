@@ -18,7 +18,7 @@ def main(argv):
         print('gonna wait for containers')
         # wait 100 seconds for containers to be created
         time.sleep(100)
-        page = urllib.request.urlopen("http://172.17.0.1:80/container")
+        page = urllib.request.urlopen("http://172.17.0.1:80/containernumber")
         container_number = page.read()
         # from bytes to string
         container_number = container_number.decode("utf-8")
