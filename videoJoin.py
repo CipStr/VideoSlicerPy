@@ -23,7 +23,10 @@ def main(argv):
         container_number = container_number.decode("utf-8")
         # convert to int
         container_number = int(container_number) - 1
+        print(container_number)
         while urllib.request.urlopen("http://172.17.0.1:80/oknumber").read().decode("utf-8") != str(container_number):
+            print("Waiting for containers...")
+            print(urllib.request.urlopen("http://172.17.0.1:80/oknumber").read().decode("utf-8"))
             time.sleep(15)
     # access the folder
     folder = FLAGS.inputFolder
