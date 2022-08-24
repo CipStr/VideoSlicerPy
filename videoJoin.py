@@ -16,8 +16,8 @@ flags.DEFINE_boolean('auto', False, 'Waits for containers and then joins the cli
 def main(argv):
     if FLAGS.auto:
         print('gonna wait for containers')
-        # wait 1 minutes
-        time.sleep(60)
+        # wait 100 seconds for containers to be created
+        time.sleep(100)
         page = urllib.request.urlopen("http://172.17.0.1:80/container")
         container_number = page.read()
         # from bytes to string
