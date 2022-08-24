@@ -1,6 +1,6 @@
 import os
 import time
-import urllib
+import urllib.request
 
 from moviepy.video.compositing.concatenate import concatenate_videoclips
 from moviepy.video.io.VideoFileClip import VideoFileClip
