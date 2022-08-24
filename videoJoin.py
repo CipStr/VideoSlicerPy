@@ -1,4 +1,6 @@
 import os
+import time
+import urllib
 
 from moviepy.video.compositing.concatenate import concatenate_videoclips
 from moviepy.video.io.VideoFileClip import VideoFileClip
@@ -8,9 +10,13 @@ from absl.flags import FLAGS
 
 flags.DEFINE_string('inputFolder', '', 'Input folder')
 flags.DEFINE_string('outputFile', '', 'Output file')
+flags.DEFINE_boolean('auto', False, 'Waits for containers and then joins the clips')
 
 
 def main(argv):
+    if FLAGS.auto:
+        # wait 2 minutes
+        time.sleep(120)
     # access the folder
     folder = FLAGS.inputFolder
     # get the list of files in the folder
