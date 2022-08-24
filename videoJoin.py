@@ -15,7 +15,7 @@ flags.DEFINE_boolean('auto', False, 'Waits for containers and then joins the cli
 
 def main(argv):
     if FLAGS.auto:
-        # wait 2 minutes
+        # wait 1 minutes
         time.sleep(60)
         page = urllib.request.urlopen("http://172.17.0.1:80/container")
         container_number = page.read()
@@ -41,7 +41,7 @@ def main(argv):
         # get the file extension
         fileExtension = os.path.splitext(fileName)[1]
         # if the file is a video file
-        if fileExtension == '.mp4':
+        if fileExtension == '.avi':
             # add the file to the list of files to be joined
             filesToJoin.append(fileName)
             # sort the list of files to be joined
